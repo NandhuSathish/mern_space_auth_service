@@ -7,9 +7,10 @@
         "dev": "node src/server.ts",
         "format:fix": " prettier . --write",
         "format:check": " prettier . --check",
-        "eslint:fix": "eslint . --fix",
-        "eslint:check": "eslint .",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "lint:fix": "eslint . --fix",
+        "lint:check": "eslint .",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "husky"
     },
     "repository": {
         "type": "git",
@@ -25,8 +26,16 @@
         "@eslint/js": "^9.22.0",
         "@types/node": "^22.13.10",
         "eslint": "^9.22.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.5.0",
         "prettier": "3.5.3",
         "typescript": "^5.8.2",
         "typescript-eslint": "^8.26.1"
+    },
+    "lint-staged": {
+        "*.ts": [
+            "npm run format:fix",
+            "npm run lint:fix"
+        ]
     }
 }
